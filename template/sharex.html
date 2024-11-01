@@ -1,0 +1,62 @@
+
+<?php 
+//echo $content;
+$postid = get_the_ID();
+$blog=get_bloginfo('url'); 
+$link_b=$blog.'?p='.$postid;
+$titulo=get_the_title();
+$titulo=$titulo.' | ';
+$titulo=str_replace(' ','+',$titulo);
+$titulo=str_replace('ñ','n',$titulo);
+$titulo=str_replace('á','a',$titulo);
+$titulo=str_replace('é','e',$titulo);
+$titulo=str_replace('í','i',$titulo);
+$titulo=str_replace('ó','o',$titulo);
+$titulo=str_replace('ú','u',$titulo);
+$titulo=str_replace('Á','A',$titulo);
+$titulo=str_replace('É','A',$titulo);
+$titulo=str_replace('Í','A',$titulo);
+$titulo=str_replace('Ó','A',$titulo);
+$titulo=str_replace('Ó','A',$titulo);
+$link=$titulo.$link_b;
+$link_tw='http://www.twitter.com/?status='.$link;
+$link_fb='http://www.facebook.com/share.php?v=4&src=bm&u='.$link_b.'&t='.$titulo;
+$link_bz='http://www.google.com/buzz/post?url='.$link_b.'&imageurl=';
+$link_ms='http://www.myspace.com/Modules/PostTo/Pages/?u='.$link_b.'&t='.$titulo;
+$link_dl='http://delicious.com/post?url='.$link_b.'&title='.$titulo;
+$script_contenido='<a id ="sharex_fb" href="#"  onclick=ventana("'.$link_fb.'")><img class="images_sharex_fb" src="'.$dir.'images/facebook_.png" alt="facebook" onmouseover=this.src="'.$dir.'images/facebook.png" onmouseout=this.src="'.$dir.'images/facebook_.png"></a>
+	<a id ="sharex_tw" href="#" onclick=ventana("'.$link_tw.'")><img class="images_sharex_fb" src="'.$dir.'images/twitter_.png" alt="twitter" onmouseover=this.src="'.$dir.'images/twitter.png" onmouseout=this.src="'.$dir.'images/twitter_.png"></a>
+	<a id ="sharex_bz" href="#"  onclick=ventana("'.$link_bz.'")><img class="images_sharex_fb" src="'.$dir.'images/buzz_.png" alt="Google Buzz" onmouseover=this.src="'.$dir.'images/buzz.png" onmouseout=this.src="'.$dir.'images/buzz_.png"></a>
+	<a id ="sharex_mys" href="#" onclick=ventana("'.$link_ms.'")><img class="images_sharex_fb" src="'.$dir.'images/myspace_.png" alt="MySpace" onmouseover=this.src="'.$dir.'images/myspace.png" onmouseout=this.src="'.$dir.'images/myspace_.png"></a>
+	<a id ="sharex_dl" href="#"  onclick=ventana("'.$link_dl.'")><img class="images_sharex_fb2" src="'.$dir.'images/delicious_.png" alt="delicious" onmouseover=this.src="'.$dir.'images/delicious.png" onmouseout=this.src="'.$dir.'images/delicious_.png"></a>
+	</div>';
+
+
+
+
+
+if ($op_single==1){
+	if (is_single() && !is_home()) {
+		 
+
+		$script_div='<div style="background: url('.$dir.'images/'.$op_bg.'.png) no-repeat;margin:0 auto 0 auto;width:317px;height:66px;vertical-align: middle;  text-align:right;border:0px solid;position:statics";>';
+		$sharex.=$script_div;
+		$sharex.=$script_contenido;
+		$sharex.=$script_sharex;
+		//echo $sharex;
+		
+ if($op_fixed=='statics'){
+		$content .= $sharex;
+		}else{
+		$content = $sharex . $content;
+		}		
+		
+		//echo $content;
+		
+		
+		
+	}
+	
+		
+}
+?>
